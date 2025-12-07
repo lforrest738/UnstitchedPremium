@@ -169,7 +169,7 @@ const App: React.FC = () => {
     guestScans: 0
   });
 
-  const [activeTab, setActiveTab] = useState('scan');
+  const [activeTab, setActiveTab] = useState<'scan' | 'shop' | 'news' | 'board' | 'me'>('scan');
 
   const handleScanComplete = (result: ScanResult) => {
     setUserState(prev => ({
@@ -239,7 +239,7 @@ const App: React.FC = () => {
         ].map((item) => (
           <button
             key={item.id}
-            onClick={() => setActiveTab(item.id)}
+            onClick={() => setActiveTab(item.id as any)}
             className={`flex flex-col items-center gap-1 ${activeTab === item.id ? navSelected : 'text-gray-300'}`}
           >
             <item.icon size={24} strokeWidth={activeTab === item.id ? 2.5 : 2} />
